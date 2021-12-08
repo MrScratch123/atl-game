@@ -1,0 +1,320 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Scripts/UI.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Actual Art/Player_Sprites_1.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/GroundCheck.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Others/Heart.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Actual Art/light_shadow_light_blob.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Actual Art/UI/health_bar_under.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Actual Art/UI/health_bar.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Actual Art/UI/health_bar_over.png" type="Texture" id=9]
+[ext_resource path="res://Assets/dogica.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Assets/Actual Art/UI/UI button.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Actual Art/UI/UI button pressed.png" type="Texture" id=12]
+
+[sub_resource type="Animation" id=9]
+resource_name = "Death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 27, 28 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.333333, 0.666667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Jump"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 17, 18, 19 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 18 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Walking"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=11]
+size = 30
+font_data = ExtResource( 10 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "Health_Change"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.2, -0.00390977, 1.2, -0.25, 0, 0.2, 0.00247145, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 26.5, 0.5 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 26.5, 32 )
+
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
+collision_mask = 26
+script = ExtResource( 3 )
+upGrv = 5
+downGrv = 10
+jumpSp = 300
+maxJumps = 1
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, -10 )
+texture = ExtResource( 6 )
+texture_scale = 0.7
+color = Color( 0.8, 1, 0.996078, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -24 )
+scale = Vector2( 3.25, 3.25 )
+texture = ExtResource( 2 )
+hframes = 8
+vframes = 4
+frame = 18
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/Death = SubResource( 9 )
+anims/Idle = SubResource( 5 )
+anims/Jump = SubResource( 8 )
+anims/RESET = SubResource( 7 )
+anims/Walking = SubResource( 6 )
+
+[node name="DamagePlayerAnimation" type="AnimationPlayer" parent="Sprite"]
+anims/Damage = SubResource( 14 )
+anims/RESET = SubResource( 15 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Node" parent="CanvasLayer"]
+script = ExtResource( 1 )
+heartSprite = ExtResource( 5 )
+
+[node name="Hearts" type="HBoxContainer" parent="CanvasLayer/UI"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 104.0
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health_Bar" type="Node2D" parent="CanvasLayer/UI"]
+position = Vector2( 488, 64 )
+
+[node name="Bar" type="TextureProgress" parent="CanvasLayer/UI/Health_Bar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -25.0
+margin_right = 150.0
+margin_bottom = 25.0
+min_value = 0.01
+value = 100.0
+texture_under = ExtResource( 7 )
+texture_over = ExtResource( 9 )
+texture_progress = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="CanvasLayer/UI/Health_Bar/Bar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -20.0
+margin_right = 60.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 11 )
+text = "100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UI/Health_Bar"]
+anims/Health_Change = SubResource( 12 )
+anims/RESET = SubResource( 13 )
+
+[node name="Tween" type="Tween" parent="CanvasLayer/UI"]
+
+[node name="Mobile Input" type="Node2D" parent="CanvasLayer"]
+
+[node name="Left" type="TouchScreenButton" parent="CanvasLayer/Mobile Input"]
+position = Vector2( 64, 448 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 11 )
+pressed = ExtResource( 12 )
+action = "left"
+
+[node name="Right" type="TouchScreenButton" parent="CanvasLayer/Mobile Input"]
+position = Vector2( 256, 448 )
+scale = Vector2( -2, 2 )
+normal = ExtResource( 11 )
+pressed = ExtResource( 12 )
+action = "right"
+
+[node name="Right2" type="TouchScreenButton" parent="CanvasLayer/Mobile Input"]
+position = Vector2( 896, 448 )
+rotation = 1.5708
+scale = Vector2( 2, 2 )
+normal = ExtResource( 11 )
+pressed = ExtResource( 12 )
+action = "jump"
+
+[node name="GroundCheck" type="Area2D" parent="."]
+position = Vector2( 0, -10 )
+collision_mask = 6
+priority = 10.0
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundCheck"]
+position = Vector2( -0.5, 38.5 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, -5 )
+shape = SubResource( 10 )
+
+[connection signal="touchedEnemy" from="." to="." method="_on_Player_touchedEnemy"]
+[connection signal="updateHealth" from="." to="CanvasLayer/UI" method="_on_Player_updateHealth"]
+[connection signal="area_entered" from="GroundCheck" to="GroundCheck" method="_on_GroundCheck_area_entered"]
+[connection signal="body_entered" from="GroundCheck" to="GroundCheck" method="_on_GroundCheck_body_entered"]
+[connection signal="body_exited" from="GroundCheck" to="GroundCheck" method="_on_GroundCheck_body_exited"]
+[connection signal="update_grounded" from="GroundCheck" to="." method="_on_GroundCheck_update_grounded"]

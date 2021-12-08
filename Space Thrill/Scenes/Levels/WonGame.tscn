@@ -1,0 +1,300 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Assets/Actual Art/part 5.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Actual Art/Part 1.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Others/Menu Parallax.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Actual Art/Part 4.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Actual Art/Part 2.png" type="Texture" id=5]
+[ext_resource path="res://Assets/dogica.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/Actual Art/UI/health_bar_under.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Actual Art/Part 3.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Actual Art/light_shadow_light_blob.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Actual Art/sapc.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/animation.gd" type="Script" id=11]
+[ext_resource path="res://Assets/Audio/WinJingle.wav" type="AudioStream" id=12]
+
+[sub_resource type="DynamicFont" id=2]
+size = 45
+extra_spacing_bottom = 8
+extra_spacing_char = -3
+extra_spacing_space = -20
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Join"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Part1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 632, 336 ), Vector2( 496, 400 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Part2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 600, 416 ), Vector2( 584, 400 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Part3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 448, 408 ), Vector2( 536, 352 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Part4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 696, 416 ), Vector2( 544, 376 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Part5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 512, 456 ), Vector2( 536, 408 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Shine and change"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.2, 1.09745, 3, -0.1, -2.38934, 0.1, -1.90255, 0, -0.2, 0.989272, 0.3, -0.146574 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "flyofff"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sapc:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Sapc:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"points": PoolRealArray( 560, -0.25, 0, 0.25, 0, 568, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Sapc:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 408, -0.25, 0, 0.4, -69.3561, -39.7402, -0.05, 558.976, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "win_anim"
+length = 20.0
+tracks/0/type = "animation"
+tracks/0/path = NodePath("Animation/A1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "Join" ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("Animation/A2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "Shine and change" ),
+"times": PoolRealArray( 2 )
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_switch"
+} ]
+}
+tracks/3/type = "animation"
+tracks/3/path = NodePath("Animation/A3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": PoolStringArray( "flyofff" ),
+"times": PoolRealArray( 2.6 )
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("Animation/AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 4.1 )
+}
+
+[node name="Main Menu" type="Node2D"]
+
+[node name="UI Manager" type="CanvasLayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="UI Manager"]
+position = Vector2( 512, 128 )
+scale = Vector2( 1.28, 2.38 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="UI Manager"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -228.0
+margin_right = 320.0
+margin_bottom = -116.0
+custom_fonts/font = SubResource( 2 )
+text = "You won!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu Parallax" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 24 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 516, 305 )
+scale = Vector2( 1.5, 1.5 )
+current = true
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animation" type="Node2D" parent="."]
+position = Vector2( -24, 0 )
+script = ExtResource( 11 )
+
+[node name="Part1" type="Sprite" parent="Animation"]
+position = Vector2( 632, 336 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+
+[node name="Part2" type="Sprite" parent="Animation"]
+position = Vector2( 600, 416 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+
+[node name="Part3" type="Sprite" parent="Animation"]
+position = Vector2( 448, 408 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 8 )
+
+[node name="Part4" type="Sprite" parent="Animation"]
+position = Vector2( 696, 416 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+
+[node name="Part5" type="Sprite" parent="Animation"]
+position = Vector2( 512, 456 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+
+[node name="A1" type="AnimationPlayer" parent="Animation"]
+anims/Join = SubResource( 3 )
+
+[node name="A2" type="AnimationPlayer" parent="Animation"]
+"anims/Shine and change" = SubResource( 4 )
+
+[node name="A3" type="AnimationPlayer" parent="Animation"]
+anims/flyofff = SubResource( 6 )
+
+[node name="Light2D" type="Light2D" parent="Animation"]
+position = Vector2( 528, 400 )
+texture = ExtResource( 9 )
+energy = 0.511827
+range_layer_min = -100
+
+[node name="Sapc" type="Sprite" parent="Animation"]
+visible = false
+position = Vector2( 568, 408 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 10 )
+hframes = 4
+
+[node name="Complete_anim" type="AnimationPlayer" parent="Animation"]
+root_node = NodePath("../..")
+anims/win_anim = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Animation"]
+stream = ExtResource( 12 )
