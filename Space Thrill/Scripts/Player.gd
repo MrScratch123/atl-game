@@ -114,6 +114,7 @@ func _death():
 	else:
 		get_node("/root/Main")._load_scene("death", true)
 		globals.lives = globals.max_lives
+		globals.parts_collected = 0
 
 func _ready():
 	globals._normalize_time()
