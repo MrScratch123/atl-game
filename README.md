@@ -1,2 +1,2 @@
-# atl-game
-Game made for ATL competition
+# Space Thrill
+This game is made for the Gamers Groove Competition
